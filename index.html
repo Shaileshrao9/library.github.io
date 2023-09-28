@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('back.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #book-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: gray;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <form id="search-form">
+            <input type="text" id="search" placeholder="Search by title, author, or ISBN">
+            <button type="button" onclick="searchBooks()">Search</button>
+        </form>
+        <ul id="book-list">
+            <!-- Sample Book Entries -->
+            <li class="book">
+                <h3>Rich Dad Poor Dad</h3>
+                <p>Author: Robert Kiyosaki</p>
+                <p>ISBN: 1234567890</p>
+            </li>
+            <li class="book">
+                <h3>The Psychology of Money</h3>
+                <p>Author: Morgan Housel</p>
+                <p>ISBN: 0987654321</p>
+            </li>
+            <li class="book">
+            <h3>The Great Gatsby</h3>
+        <p>Author: F. Scott Fitzgerald</p>
+        <p>ISBN: 9780743273565</p>
+    </li>
+    <li class="book">
+        <h3>To Kill a Mockingbird</h3>
+        <p>Author: Harper Lee</p>
+        <p>ISBN: 9780061120084</p>
+    </li>
+    <li class="book">
+        <h3>1984</h3>
+        <p>Author: George Orwell</p>
+        <p>ISBN: 9780451524935</p>
+    </li>
+    <li class="book">
+        <h3>Pride and Prejudice</h3>
+        <p>Author: Jane Austen</p>
+        <p>ISBN: 9780141439518</p>
+    </li>
+    <li class="book">
+        <h3>The Catcher in the Rye</h3>
+        <p>Author: J.D. Salinger</p>
+        <p>ISBN: 9780316769488</p>
+    </li>
+            <!-- Add more sample books here -->
+        </ul>
+    </div>
+    <script>
+        function searchBooks() {
+            const searchInput = document.getElementById("search").value.toLowerCase();
+            const bookList = document.getElementById("book-list");
+            const bookItems = bookList.getElementsByClassName("book");
+
+            for (let i = 0; i < bookItems.length; i++) {
+                const title = bookItems[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+                const author = bookItems[i].getElementsByTagName("p")[0].innerText.toLowerCase();
+                const isbn = bookItems[i].getElementsByTagName("p")[1].innerText.toLowerCase();
+
+                if (title.includes(searchInput) || author.includes(searchInput) || isbn.includes(searchInput)) {
+                    bookItems[i].style.display = "block";
+                } else {
+                    bookItems[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
